@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Listado contribuyentes</title>
+</head>
+<body>
+
+<table>
+	<thead>
+	<th>Nombre</th>
+	<th>Apellido</th>
+	<th>NIT</th>
+	<th>Fecha ingreso</th>
+	<th>Importancia</th>
+	</thead>
+	<th:block th:each="contribuyente, row:${contribuyentes}">
+	<tr>
+	<th th:text="${contribuyente.codigoContribuyente}"/>
+	<th th:text="${contribuyente.nombreContribuyente}"/>
+	<th th:text="${contribuyente.apellidoContribuyente}"/>
+	<th th:text="${contribuyente.fIngreso}"/>
+	<th th:text="${contribuyente.nitContribuyente}"/>
+	<th th:text="${contribuyente.importancia}"/>
+	
+	</tr>
+	
+	
+	</th:block>
+
+</table>
+
+</body>
+</html>
