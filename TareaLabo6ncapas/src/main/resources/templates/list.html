@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Listado contribuyentes</title>
 </head>
 <body>
 
-<table>
-	<thead>
-	<th>Nombre</th>
-	<th>Apellido</th>
-	<th>NIT</th>
-	<th>Fecha ingreso</th>
-	<th>Importancia</th>
-	</thead>
-	<th:block th:each="contribuyente, row:${contribuyentes}">
-	<tr>
-	<th th:text="${contribuyente.codigoContribuyente}"/>
-	<th th:text="${contribuyente.nombreContribuyente}"/>
-	<th th:text="${contribuyente.apellidoContribuyente}"/>
-	<th th:text="${contribuyente.fIngreso}"/>
-	<th th:text="${contribuyente.nitContribuyente}"/>
-	<th th:text="${contribuyente.importancia}"/>
-	
-	</tr>
-	
-	
-	</th:block>
-
-</table>
-
+	<table>
+		<thead>
+			<th>Codigo</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>NIT</th>
+			<th>Fecha ingreso</th>
+			<th>Importancia</th>
+		</thead>
+		<th:block th:each="contribuyente, row:${contribuyentes}">
+			<tr>
+				<th th:text="${contribuyente.codigoContribuyente}" />
+				<th th:text="${contribuyente.nombreContribuyente}" />
+				<th th:text="${contribuyente.apellidoContribuyente}" />
+				<th th:text="${contribuyente.nitContribuyente}" />
+				<th th:text="${contribuyente.getFechaDelegate()}" />
+				<th th:text="${contribuyente.importancia.getNameImportancia()}" />
+			</tr>
+		</th:block>
+	</table>
+	<p>de la 1 a la 4 eran pruebas, no me salia :v</p>
 </body>
 </html>

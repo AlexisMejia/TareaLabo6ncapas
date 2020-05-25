@@ -20,4 +20,5 @@ public class ImportanciaServiceImpl implements ImportanciaService{
 		return importanciaDAO.finAll();
 	}
 
+
 }

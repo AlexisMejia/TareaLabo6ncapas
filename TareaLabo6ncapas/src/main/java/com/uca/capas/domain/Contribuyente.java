@@ -1,5 +1,6 @@
 package com.uca.capas.domain;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -14,9 +15,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import net.bytebuddy.asm.Advice.This;
 
 
 @Entity
@@ -29,6 +35,7 @@ public class Contribuyente {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer codigoContribuyente;
 	
+	@NotNull
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_importancia")
 	private Importancia importancia;
@@ -49,14 +56,15 @@ public class Contribuyente {
 	private String nitContribuyente;
 	
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="f_fecha_ingreso")
-	private LocalDate fIngreso;
+	private Date fIngreso;
 
 	
 	
 
 
-	public Contribuyente(Integer codigoContribuyente, String nombreContribuyente, String apellidoContribuyente, String nitContribuyente,LocalDate fIngreso) {
+	public Contribuyente(Integer codigoContribuyente, String nombreContribuyente, String apellidoContribuyente, String nitContribuyente,Date fIngreso) {
 		super();
 		this.codigoContribuyente = codigoContribuyente;
 		this.nombreContribuyente = nombreContribuyente;
@@ -110,13 +118,24 @@ public class Contribuyente {
 		this.nitContribuyente = nitContribuyente;
 	}
 
-	public LocalDate getfIngreso() {
+	public Date getfIngreso() {
 		return fIngreso;
 	}
 
-	public void setfIngreso(LocalDate fIngreso) {
+	public void setfIngreso(Date fIngreso) {
 		this.fIngreso = fIngreso;
 	}
 	
-	
+	//Delegate para conversion de fecha
+		public String getFechaDelegate(){
+			if(this.fIngreso == null){
+				return "";
+			}
+			else{
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+				String shortdate = sdf.format(this.fIngreso.getTime());
+				return shortdate;
+			}
+		}
+		
 }

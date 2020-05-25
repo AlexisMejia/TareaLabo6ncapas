@@ -22,6 +22,8 @@ public class ContribuyenteDAOImpl implements ContribuyenteDAO {
 	@Transactional
 	public void save(Contribuyente contribuyente) throws DataAccessException {
 		entityManager.persist(contribuyente);
+		entityManager.flush();
+		System.out.println("estoy en importancia:"+ contribuyente.getImportancia());
 		
 	}
 

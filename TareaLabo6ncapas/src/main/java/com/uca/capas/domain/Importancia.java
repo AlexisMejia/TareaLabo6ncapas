@@ -6,10 +6,13 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -18,6 +21,8 @@ public class Importancia {
 	
 	@Id
 	@Column(name="c_importancia")
+	@NotNull
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigoImportancia;
 	
 	
@@ -40,14 +45,31 @@ public class Importancia {
 
 
 
+	public void setCodigoImportancia(Integer codigoImportancia) {
+		this.codigoImportancia = codigoImportancia;
+	}
+
+
 	public Integer getCodigoImportancia() {
 		return codigoImportancia;
 	}
 
+	public void setNameImportancia(String nameImportancia) {
+		this.nameImportancia = nameImportancia;
+	}
 
 
 	public String getNameImportancia() {
 		return nameImportancia;
+	}
+
+
+
+	public Importancia(Integer codigoImportancia, String nameImportancia, List<Contribuyente> contribuyentes) {
+		super();
+		this.codigoImportancia = codigoImportancia;
+		this.nameImportancia = nameImportancia;
+		this.contribuyentes = contribuyentes;
 	}
 
 
