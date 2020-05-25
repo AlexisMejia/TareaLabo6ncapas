@@ -61,9 +61,6 @@ public class Contribuyente {
 	private Date fIngreso;
 
 	
-	
-
-
 	public Contribuyente(Integer codigoContribuyente, String nombreContribuyente, String apellidoContribuyente, String nitContribuyente,Date fIngreso) {
 		super();
 		this.codigoContribuyente = codigoContribuyente;
