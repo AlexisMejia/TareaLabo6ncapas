@@ -70,7 +70,7 @@ public class MainController {
 		return mav;
 	}
 
-	@PostMapping("/verContribuyentes")
+	@PostMapping("/listaContribuyentes")
 	public ModelAndView show() {
 		ModelAndView mav = new ModelAndView();
 		List<Contribuyente> contri = contribuyenteService.findAllContribuyente();
