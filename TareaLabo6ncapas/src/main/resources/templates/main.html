@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Bienvenido</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 	<label>Fecha de ingreso: </label> <input type="date" th:field="*{fIngreso}">
 		 <span th:errors="*{fIngreso}" style="color: #FF0000" /><br>
 	
-	<label>Importancia: </label><select th:field="*{importancia.codigoImportancia}">
+	<label>Importancia</label><select th:field="*{importancia.codigoImportancia}">
 	<option th:each="importa: ${importancia}"
 			th:value='${importa.codigoImportancia}'
 			th:text="${importa.nameImportancia}">--Select--</option>
